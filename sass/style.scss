@@ -1,0 +1,327 @@
+//@import "../sheet.css"
+
+
+
+
+/* благодаря тому, что в бутстрапе колонки заданы в %, можно попытаться подправить ширину контейнера*/
+@media (min-width: 1200px) {
+    .container {
+        width: 1200px;
+    }
+}
+
+
+
+
+a{
+    color: inherit;
+}
+body {
+    font-family: courier; //для видимости
+    background-color: #cfd8dc;
+}
+.fw-500 {
+    font-weight: 500;
+}
+.posstat {
+    position: static;
+}
+*, *:before, *:after {
+    //box-sizing: border-box;
+}
+*{
+    transition: width .5s ease-in-out;
+}
+/* как переносить слова по буквам, когда слишком длинные?*/
+/* визуализация отладка*/
+/*div {
+    background-color: rgba(0,0,0, .10);
+    box-shadow: 0 0 0 1px rgba(255,0,0, .5);
+}*/
+
+
+
+
+
+/* макет*/
+.height {
+    height: 2000px;
+}
+.header {
+    min-height: 113px;
+    padding-top: 14px;
+    
+    font-family: 'Roboto', courier;
+    
+    background-color: #212121;
+    color: #c7c7c7;
+
+
+}
+.header__logo {
+    font-family: 'Roboto', courier;
+    font-size: 36px;
+    line-height: 41px;
+    font-weight: 100;
+    
+    b{
+        
+    }
+}
+
+
+
+
+$signin-widget-border : white;
+.signin-widget {
+    border: 1px solid $signin-widget-border;
+    
+    font-size: 18px;
+    font-weight: 100;
+    line-height: 15px;
+    text-align: center;
+    
+    border-radius: 4px;
+}
+.signin-widget>*{
+    
+    padding: 13px;
+}
+.signin-widget__top {
+    
+     border-bottom: 1px solid $signin-widget-border;   
+}
+
+
+
+
+
+
+
+.nav li{
+    margin: 15px
+}
+
+
+.nav>li {
+    position: static; //override bootstrap
+}
+.dropdown-menu {
+    top: auto;
+}
+ul.dropdown-menu.nav.nav-tabs {
+    position: absolute;
+    //top: 0;
+    left: 0;
+    width: 100%;
+}
+
+/**/
+.dropdown-menu.nav-tabs {
+    //min-width: 100%;
+    //position: fixed;
+   /* top: auto;
+    left: 0;
+    right: 0;
+    width: 100vw;*/
+    
+}
+
+
+
+
+$Roboto: Roboto, courier;
+$PTSerif: 'PT Serif', courier;
+$slide-text: 'PT Serif', courier;
+
+/*slider*/
+
+.slider {
+    min-width: 600px;
+    
+    background-color: orange;
+}
+.slider__slide {
+    //overflow: hidden; /*при переходе на соседний слайд торчит содержимое*/
+    position: relative; /*для надписи на слайде*/
+    
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    /* align-content: center; */
+    align-items: flex-end;
+    
+    //width: 15px; //что если разные слайды? Хочу сделать по контенту.
+    margin: 0 auto;
+    
+    /*text-align: center; /*когда картинка не влазит, она будет располагаться по левому краю. Центрироваться - только когда широкая область.*/
+}
+.inline-block-wrapper { /* сделает свою ширину по широчайшему контенту*/
+    position:relative;/*для надписи на слайде*/
+}
+.slider__slide>img {
+    /*max-width: 100%;*/
+    /*height: auto;
+    max-height: 400px;*/ /*как вариант из jcarusel*/
+}
+.slider__text {
+    position: absolute;
+    top: 178px;
+    left: 0;
+    h2 {
+        font-family: $Roboto;
+        font-size: 48px;
+        font-weight: 100;
+        b{ text-transform: uppercase;}
+    }
+    font-family: $slide-text;
+    font-size: 16px;
+    font-weight: 100;
+    line-height: 24px;
+    color: white;
+}
+// inline-block-wrapper не испортил центрование слайдера. Странно, но приятно.
+// абзац теперь 5 колоночный улетает за пределы экрана при мобильной версии
+
+
+$bread-h: 75px;
+.breadcrumbs {
+    min-height: $bread-h;
+    
+    font-family: $Roboto;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: $bread-h;
+    a {
+        &:after {
+            content: "";
+        }
+    }
+}
+
+
+
+.content {
+    min-height: 1455px;
+    padding-bottom: 100px;
+}
+
+
+
+.black-card {
+    min-height: 473px;
+    padding: 15px 27px;
+    
+    font-family: $Roboto;
+    font-weight: 100;
+    font-size: 18px;
+    
+    list-style-type: none;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #212121;
+}
+.black-card__item{
+    display: block;
+    
+    &:not(:first-child) {
+        border-top: 1px solid white;
+    }
+    //
+    padding: 9px 0;
+    //
+}
+
+.item__badge {
+    float: right; 
+
+    &:before {
+        content: "+";
+    }
+    .cat__link--active+&:before {
+        content: "-";
+    }
+}
+
+
+
+.cat {
+    @extend .black-card;
+    margin-top: -3px; /*in photoshop line height does not move the first line*/
+    
+    font-size: 18px;
+    line-height: 30px;
+    text-transform: uppercase;
+    list-style-type: none;
+}
+.cat--lvl2 {
+    margin-left: 0;
+    padding-left: 0;
+    
+    font-family: $PTSerif;
+    font-size: 14px;
+    line-height: 22px;
+    text-transform: capitalize;
+    list-style-type: none;
+    
+    color: #bcbcbc;
+}
+
+.cat__item {
+    @extend .black-card__item;
+}
+
+/*ahref activity*/
+.cat__link--active , .cat__link:hover {
+    text-decoration: underline;
+} /* не получается так */
+.cat--lvl2__link--active, .cat--lvl2__link:hover {
+    @extend .cat__link--active; //чтобы не добавлять 2 класса в разметке
+    color: #fff;
+}
+
+
+/* li activity*/
+.cat--closed .cat--lvl2 {
+    display: none;
+}
+%cat--lvl2,
+.cat__item--active>.cat--lvl2
+, .cat__item:hover>.cat--lvl2 { /* not bem. If there is inner elements, then displays them block*/
+    display: block;
+}
+.cat--lvl2:target {
+    @extend %cat--lvl2;
+}
+
+
+.sizes {
+    //прям флексбокс
+    word-spacing: 14px;
+    
+}
+.size-badge {
+    display: inline-block;
+    box-sizing: border-box;
+    min-width: 40px;
+    min-height: 30px;
+    padding: 3px 7px;
+    margin-top: 15px;
+    //margin-right: 14px;
+    
+    font-family: $PTSerif;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    vertical-align: middle;
+    
+    color: #000;
+    background-color: #e0e0e0;
+    //border-radius: 10px;
+}
+.size-badge:nth-child(4n) {
+    //margin-right: 0;
+}
